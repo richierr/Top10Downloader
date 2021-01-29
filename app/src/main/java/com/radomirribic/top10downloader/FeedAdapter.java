@@ -11,15 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView.ViewHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FeedAdapter extends ArrayAdapter {
     private static final String TAG = "xxxFeedAdapter";
     private final int layoutResource;
     private final LayoutInflater layoutInflater;
-    private List<FeedEntry> applications;
+    private ArrayList<FeedEntry> applications;
 
-    public FeedAdapter(@NonNull Context context, int resource, List<FeedEntry> applications) {
+    public FeedAdapter(@NonNull Context context, int resource, ArrayList<FeedEntry> applications) {
         super(context, resource);
         this.applications = applications;
         this.layoutResource=resource;
@@ -49,7 +50,7 @@ public class FeedAdapter extends ArrayAdapter {
         FeedEntry currentApp=applications.get(position);
 
         viewHolder.tvArtist.setText(currentApp.getArtist());
-        viewHolder.tvName.setText(currentApp.getName());
+        viewHolder.tvName.setText((applications.indexOf(currentApp)+1)+" "+currentApp.getName());
         viewHolder.tvSummary.setText(currentApp.getSummary());
 
         return convertView;
